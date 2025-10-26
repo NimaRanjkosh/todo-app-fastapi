@@ -9,7 +9,7 @@ from sqlalchemy import pool
 from alembic import context
 
 from core.database import Base
-from tasks.models import TaskModel, TaskStatus
+from tasks.models import TaskModel, TaskStatusModel
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 ENV_PATH = BASE_DIR / ".env"

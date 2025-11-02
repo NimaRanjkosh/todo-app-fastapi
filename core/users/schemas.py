@@ -1,11 +1,10 @@
 from pydantic import BaseModel, Field, model_validator
-from typing import Optional
-from datetime import datetime
 
 
 class UserLoginSchema(BaseModel):
-    username : str = Field(...)
-    password : str = Field(..., description="User's password")
+    username: str = Field(...)
+    password: str = Field(..., description="User's password")
+
 
 class UserRegisterSchema(BaseModel):
     username: str = Field(...)

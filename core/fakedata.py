@@ -1,12 +1,11 @@
 from core.database import SessionLocal
-from sqlalchemy.orm import Session
 from users.models import UserModel
 from tasks.models import TaskModel
-from taskstatus.models import TaskStatusModel
 from faker import Faker
 from random import randint
 
 fake = Faker()
+
 
 def seed_users(db):
     user = UserModel(username=fake.user_name())
@@ -15,6 +14,7 @@ def seed_users(db):
     db.commit()
     db.refresh(user)
     return user
+
 
 def seed_tasks(db, user_info, count=10):
     tasks_list = []
@@ -25,14 +25,14 @@ def seed_tasks(db, user_info, count=10):
                 description=fake.text(),
                 status_id=randint(1, 2),
                 is_completed=fake.boolean(),
-                user_id = user_info.id
+                user_id=user_info.id,
             )
         )
     db.add_all(tasks_list)
     db.commit()
     print(f"Added {count} tasks for user_id: {user_info.id}")
-    
-    
+
+
 def main():
     db = SessionLocal()
     try:
@@ -42,5 +42,5 @@ def main():
         db.close()
 
 
-if __name__=="__main__":
+if __name__ == "__main__":
     main()

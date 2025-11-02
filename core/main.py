@@ -10,7 +10,8 @@ async def lifespan(app: FastAPI):
     print("Application start-up")
     yield
     print("Application shut-down")
-    
+
+
 app = FastAPI(lifespan=lifespan)
 
 app.include_router(router=task_routes, tags=["tasks"], prefix="/todo")
